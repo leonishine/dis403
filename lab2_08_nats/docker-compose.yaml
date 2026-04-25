@@ -1,0 +1,13 @@
+version: '3'
+services:
+  nats:
+    image: nats:latest
+    ports:
+      - "4222:4222"
+
+  weather-publisher:
+    build: .
+    depends_on:
+      - nats
+    ports:
+      - "8090:8090"
